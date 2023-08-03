@@ -1,0 +1,100 @@
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 8.0.31-0ubuntu0.20.04.2 (Ubuntu)
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> select * from vivek;
+ERROR 1046 (3D000): No database selected
+mysql> use vivek
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> select * from vivek;
+ERROR 1146 (42S02): Table 'vivek.vivek' doesn't exist
+mysql> select * from 23MCA1023;
+Empty set (0.00 sec)
+
+mysql> insert into 23MCA1023(ecommerce_site_name, founder, founded_date, networth)
+    -> values("Amazon.com", "Jeff bezos", "1994-07-05"),
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 2
+mysql> insert into 23MCA1023 values("Amazon.com", "Jeff bezos", "1994-07-05");
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> drop table vivek;
+ERROR 1051 (42S02): Unknown table 'vivek.vivek'
+mysql> drop table 23MCA1023;
+Query OK, 0 rows affected (0.24 sec)
+
+mysql> create table 23MCA1023(
+    -> ecommerce_site_name varchar(100),
+    -> founder varchar(100),
+    -> founded_date date,
+    -> networth varchar(100);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 5
+mysql> create table 23MCA1023( ecommerce_site_name varchar(100), founder varchar(100), founded_date date, networth varchar(100));
+Query OK, 0 rows affected (0.34 sec)
+
+mysql> insert into 23MCA1023 values("Amazon.com", "Jeff bezos", "1994-07-05", "1356B");
+Query OK, 1 row affected (0.07 sec)
+
+mysql> insert into 23MCA1023 values("ebay", "Pierre Omidyar", "1995-09-03"),
+    -> ("flipkart", "sachin bansal, binny bansal", "")
+    -> ;
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into 23MCA1023 values("ebay", "Pierre Omidyar", "1995-09-03", ""23.40B), ("flipkart", "sachin bansal, binny bansal", "40B");
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '23.40B), ("flipkart", "sachin bansal, binny bansal", "40B")' at line 1
+mysql> insert into 23MCA1023 values("ebay", "Pierre Omidyar", "1995-09-03", "23.40B"), ("flipkart", "sachin bansal, binny bansal", "40B");
+ERROR 1136 (21S01): Column count doesn't match value count at row 2
+mysql> insert into 23MCA1023 values("ebay", "Pierre Omidyar", "1995-09-03", "23.40B"), ("flipkart", "sachin bansal, binny bansal", "2007-10-12", "40B");
+Query OK, 2 rows affected (0.07 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from 23MCA1023;
++---------------------+-----------------------------+--------------+----------+
+| ecommerce_site_name | founder                     | founded_date | networth |
++---------------------+-----------------------------+--------------+----------+
+| Amazon.com          | Jeff bezos                  | 1994-07-05   | 1356B    |
+| ebay                | Pierre Omidyar              | 1995-09-03   | 23.40B   |
+| flipkart            | sachin bansal, binny bansal | 2007-10-12   | 40B      |
++---------------------+-----------------------------+--------------+----------+
+3 rows in set (0.00 sec)
+
+mysql> insert into 23MCA1023 values("walmart","sam walton, bud walton", "1962-05-02", "413B"),
+    -> ("Bigcommerce", "Eddie Machaalani, Mitchell Harper", "2009-01-01", "743M");
+Query OK, 2 rows affected (0.08 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from 23MCA1023
+    -> ;
++---------------------+-----------------------------------+--------------+----------+
+| ecommerce_site_name | founder                           | founded_date | networth |
++---------------------+-----------------------------------+--------------+----------+
+| Amazon.com          | Jeff bezos                        | 1994-07-05   | 1356B    |
+| ebay                | Pierre Omidyar                    | 1995-09-03   | 23.40B   |
+| flipkart            | sachin bansal, binny bansal       | 2007-10-12   | 40B      |
+| walmart             | sam walton, bud walton            | 1962-05-02   | 413B     |
+| Bigcommerce         | Eddie Machaalani, Mitchell Harper | 2009-01-01   | 743M     |
++---------------------+-----------------------------------+--------------+----------+
+5 rows in set (0.00 sec)
+
+mysql> select * from 23MCA1023
+    -> ;
++---------------------+-----------------------------------+--------------+----------+
+| ecommerce_site_name | founder                           | founded_date | networth |
++---------------------+-----------------------------------+--------------+----------+
+| Amazon.com          | Jeff bezos                        | 1994-07-05   | 1356B    |
+| ebay                | Pierre Omidyar                    | 1995-09-03   | 23.40B   |
+| flipkart            | sachin bansal, binny bansal       | 2007-10-12   | 40B      |
+| walmart             | sam walton, bud walton            | 1962-05-02   | 413B     |
+| Bigcommerce         | Eddie Machaalani, Mitchell Harper | 2009-01-01   | 743M     |
++---------------------+-----------------------------------+--------------+----------+
+5 rows in set (0.00 sec)
+
